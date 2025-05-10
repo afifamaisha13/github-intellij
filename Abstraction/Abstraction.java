@@ -20,7 +20,7 @@ abstract class Vehicle {
     }
 }
 
-// Subclass: Car extends Vehicle and implements Drivable
+
 class Car extends Vehicle implements Drivable {
 
     public Car(String brand) {
@@ -38,7 +38,7 @@ class Car extends Vehicle implements Drivable {
     }
 }
 
-// Subclass: ElectricBike extends Vehicle and implements Drivable
+
 class ElectricBike extends Vehicle implements Drivable {
 
     public ElectricBike(String brand) {
@@ -56,19 +56,20 @@ class ElectricBike extends Vehicle implements Drivable {
     }
 }
 
-// Main class
 public class AbstractionExample {
     public static void main(String[] args) {
-        Vehicle car = new Car("Toyota");
+        
+        Car car = new Car("Toyota");
         car.showBrand();
-        ((Drivable) car).drive();
+        car.drive();
         car.fuelType();
 
         System.out.println();
 
-        Vehicle ebike = new ElectricBike("Tesla");
+        
+        ElectricBike ebike = new ElectricBike("Tesla");
         ebike.showBrand();
-        ((Drivable) ebike).drive();
+        ebike.drive();
         ebike.fuelType();
     }
 }
