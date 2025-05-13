@@ -1,0 +1,96 @@
+abstract class MagicalCreature {
+    protected String name;
+    protected int energy;
+
+    public MagicalCreature(String name, int energy) {
+        this.name = name;
+        this.energy = energy;
+    }
+
+    public void rest() {
+        energy += 10;
+        System.out.println(name + " is resting. Energy is now: " + energy);
+    }
+
+    // Abstract method
+    public abstract void useMagic();
+}
+
+
+interface Flyable {
+    void fly();
+}
+
+interface Swimmable {
+    void swim();
+}
+
+
+class Dragon extends MagicalCreature implements Flyable {
+    public Dragon(String name, int energy) {
+        super(name, energy);
+    }
+
+    public void useMagic() {
+        energy -= 15;
+        System.out.println(name + " breathes fire! Energy is now: " + energy);
+    }
+
+    public void fly() {
+        energy -= 5;
+        System.out.println(name + " flies across the sky! Energy is now: " + energy);
+    }
+}
+
+
+class Mermaid extends MagicalCreature implements Swimmable {
+    public Mermaid(String name, int energy) {
+        super(name, energy);
+    }
+
+    public void useMagic() {
+        energy -= 10;
+        System.out.println(name + " sings a magical melody! Energy is now: " + energy);
+    }
+
+    public void swim() {
+        energy -= 3;
+        System.out.println(name + " swims gracefully! Energy is now: " + energy);
+    }
+}
+
+
+class Pegasus implements Flyable {
+    private String name;
+
+    public Pegasus(String name) {
+        this.name = name;
+    }
+
+    public void fly() {
+        System.out.println(name + " soars through the clouds!");
+    }
+}
+
+
+public class MagicalWorld {
+    public static void main(String[] args) {
+        Dragon draco = new Dragon("Draco", 100);
+        Mermaid ariel = new Mermaid("Ariel", 80);
+        Pegasus sky = new Pegasus("Sky");
+
+        draco.rest();
+        draco.useMagic();
+        draco.fly();
+
+        System.out.println();
+
+        ariel.rest();
+        ariel.useMagic();
+        ariel.swim();
+
+        System.out.println();
+
+        sky.fly();
+    }
+}
