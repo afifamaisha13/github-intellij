@@ -1,0 +1,51 @@
+// Custom Checked Exception for Age
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);  
+    }
+}
+
+// Custom Checked Exception for Department
+class InvalidDepartmentException extends Exception {
+    public InvalidDepartmentException(String message) {
+        super(message);
+    }
+}
+
+// Main class
+public class Test {
+    
+    // Method to validate age
+    public static void validateAge(int age) 
+      throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Age must be 18 or above.");
+        }
+        System.out.println("Valid age: " + age);
+    }
+
+    // Method to validate department
+    public static void validateDepartment(String dept) 
+      throws InvalidDepartmentException {
+        if (!dept.equalsIgnoreCase("ICT")) {
+            throw new InvalidDepartmentException("Only ICT department is allowed.");
+        }
+        System.out.println("Valid department: " + dept);
+    }
+
+    public static void main(String[] args) {
+        try {
+            validateAge(20);           // Try 12 to trigger age exception
+            validateDepartment("HR");  // Try "ICT" to make it valid
+        } 
+        catch (InvalidAgeException e) {
+            System.out.println("Caught Age Exception: " + e.getMessage());
+        } 
+        catch (InvalidDepartmentException e) {
+            System.out.println("Caught Department Exception: " + e.getMessage());
+        } 
+        finally {
+            System.out.println("End of validation. This runs no matter what.");
+        }
+    }
+}
